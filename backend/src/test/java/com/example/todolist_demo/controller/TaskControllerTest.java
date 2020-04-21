@@ -109,6 +109,10 @@ public class TaskControllerTest {
                         .is4xxClientError());
     }
 
+    /**
+     * 测试更新
+     * @throws Exception
+     */
     @Test
     public void shouldUpdateTask() throws Exception {
         Task task = new Task();

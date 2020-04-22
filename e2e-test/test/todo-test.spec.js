@@ -60,5 +60,25 @@ describe('Todo List', function () {
             expect(originalItemsCount - itemsCount).to.eql(1);
           });
     });
+    
+    describe('get length', function () {
+      let page;
+
+      before (async function () {
+        page = await browser.newPage();
+        await page.goto('http://127.0.0.1:3000/');
+      });
+
+      it('should get the length', async function() {
+        let todoList = await page.waitFor('#todo-list');
+        const expectDoneValue = await page.evaluate(todoList => todoList.children.length, todoList);
+        expect(expectDoneValue).to.eql(3);
+      }) 
+
+      after (async function () {
+        await page.close();
+      });  
+
+    });
 
   });
